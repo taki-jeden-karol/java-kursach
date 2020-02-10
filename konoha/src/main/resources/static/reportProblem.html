@@ -2,23 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/problems.css">
     <title>Сообщить о проблеме</title>
     <ul class="menu-main">
         <li><a href="">Название</a></li>
-        <li><a href="" class="current">Главная</a></li>
+        <li><a href="index.html" class="current">Главная</a></li>
         <li><a href="problems.html">Проблемы</a></li>
-        <li><a href="">Новости</a></li>
-        <li><input type="button" value="input"/></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><input type="button" value="Сообщить о проблеме" onclick='location.href="reportProblem.html"'/></li>
     </ul>
 </head>
 <body>
 <form>
-    <label for="categories">Фильтр категорий:</label>
-    <select id="categories">
-        <option value="road">Дорожные проблемы</option>
-        <option value="social">Социальная сфера</option>
-        <option value="urban">Городское хозяйство</option>
-    </select>
+    <div>
+        <table class="problems" align="center" width="90%">
+            <tr>
+                <td>
+                    <label for="categories">Фильтр категорий:</label>
+                    <select id="categories">
+                        <option value="road">Дорожные проблемы</option>
+                        <option value="social">Социальная сфера</option>
+                        <option value="urban">Городское хозяйство</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
 </form>
 </body>
 </html>
