@@ -1,4 +1,4 @@
-.problems table {
+table.problems {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
     text-align: left;
@@ -6,7 +6,7 @@
     border-spacing: 5px;
     background: #ffffff;
     color: #656665;
-    border: 3px solid #ECE9E0;
+    border: 1px solid rgba(122,122,122,0.5);
     border-radius: 20px;
     width: 90%;
     margin: 0 auto;
@@ -20,7 +20,7 @@ table.news {
     border-spacing: 5px;
     background: #ffffff;
     color: #656665;
-    border: 3px solid #ECE9E0;
+    border: 1px solid rgba(122,122,122,0.5);
     border-radius: 20px;
     width: 90%;
     margin: 0 auto;
