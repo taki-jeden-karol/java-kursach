@@ -12,7 +12,7 @@
     margin: 0 auto;
 }
 
-table {
+table.news {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
     text-align: left;
@@ -26,8 +26,10 @@ table {
     margin: 0 auto;
 }
 
-
 th {
     font-size: 18px;
     padding: 10px;
+}
+.semi {
+    opacity: 0.5;
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main-menu.css">
     <link rel="stylesheet" href="css/table-style.css">
     <title>Главная</title>
 </head>
@@ -12,60 +12,68 @@
     <li><a href="index.html">Главная</a></li>
     <li><a href="problems.html">Проблемы</a></li>
     <li><a href="news.html" class="current">Новости</a></li>
-    <li><input type="button" value="input"/></li>
+    <li><input type="button" value="Сообщить о проблеме"/></li>
 </ul>
 
-<table>
+<table class="news">
+    <TR>
+    <thead>
+        <TD>Информация</TD>
+    </thead>
+    </TR>
     <tbody>
     <TR>
-        <TD>Информация</TD>
-        <TD ROWSPAN=4>Фото</TD>
-    </TR>
-    <TR>
-        <TD>информация текстом</TD>
+        <TD>информация текстом</TD> <TD ROWSPAN=4 align="center">Фото</TD>
     </TR>
     </tbody>
     <tfoot>
     <TR>
-        <TD>Дата</TD> <TD>*тут дата*</TD> <TD>*кол-во лайк*</TD>
+        <TD>Дата *тут дата*</TD>
+        <TD align="right">0 <img src="icon/like_icon.png" class="semi"> 0 <img src="icon/comment_icon.png" class="semi"></TD>
     </TR>
     </tfoot>
 </table>
 
 <br>
 
-<table>
+<table class="news">
     <TR>
+        <thead>
         <TD>Информация</TD>
-        <TD ROWSPAN=4>Фото</TD>
+        </thead>
     </TR>
+    <tbody>
     <TR>
-        <TD>информация текстом</TD>
+        <TD>информация текстом</TD> <TD ROWSPAN=4 align="center">Фото</TD>
     </TR>
+    </tbody>
+    <tfoot>
     <TR>
-        <TD>Дата</TD>
+        <TD>Дата *тут дата*</TD>
+        <TD align="right">0 <img src="icon/like_icon.png" class="semi"> 0 <img src="icon/comment_icon.png" class="semi"></TD>
     </TR>
-    <TR>
-        <TD>*тут дата*</TD>
-    </TR>
+    </tfoot>
 </table>
 
 <br>
 
-<table>
+<table class="news">
     <TR>
+        <thead>
         <TD>Информация</TD>
-        <TD ROWSPAN=4>Фото</TD>
+        </thead>
     </TR>
+    <tbody>
     <TR>
-        <TD>информация текстом</TD>
+        <TD>информация текстом</TD> <TD ROWSPAN=4 align="center">Фото</TD>
     </TR>
+    </tbody>
+    <tfoot>
     <TR>
-        <TD>Дата</TD>
+        <TD>Дата *тут дата*</TD>
+        <TD align="right">0 <img src="icon/like_icon.png" class="semi"> 0 <img src="icon/comment_icon.png" class="semi"></TD>
     </TR>
-    <TR>
-        <TD>*тут дата*</TD>
-    </TR>
+    </tfoot>
 </table>
 
 </body>
