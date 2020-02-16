@@ -5,7 +5,7 @@ a.glo{
     text-align:center;
     margin:20px auto;
     display: block;
-    background-image: linear-gradient(to left,transparent,transparent 50%,#4D92FE 50%,#4D92FE);
+    background-image: linear-gradient(to left, transparent, transparent 50%, #4D92FE 50%,#4D92FE);
     background-position: 100% 0;
     background-size: 200% 100%;
     transition: all .25s ease-in;
