@@ -66,3 +66,12 @@
   display: inline-block;
   transition: color .2s;
 }
+
+.categories{
+  width: 90%;
+  height: 50px;
+  background: rgba(230, 230, 230, 0.25);
+  font-size: 14px;
+  margin: 20px;
+  border-radius: 5px;
+}
