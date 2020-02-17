@@ -20,7 +20,7 @@
     </script>
 
     <ul class="menu-main">
-        <li class="nazvanie">KonohaLIVE</li>
+        <li class="nazvanie" >KonohaLIVE</li>
         <li><a href="index.html">Главная</a></li>
         <li><a href="problems.html">Проблемы</a></li>
         <li><a href="news.html">Новости</a></li>
@@ -39,13 +39,13 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td align="center">
                     <div id="map" style="width: 90%; height: 300px; margin: 10px auto"></div>
                     <input type="text" placeholder="Укажите точку на карте">
                 </td>
             </tr>
             <tr>
-                <td>
+                <td align="center">
                     <select id="categories" class="categories">
                         <option selected disabled>Укажите категорию проблемы:</option>
                         <option value="road">Дорожные проблемы</option>
@@ -55,8 +55,18 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td align="center">
                     <input type="comment" placeholder="Описание проблемы" style="height: 100px">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="height: 50px;">
+                    <input type="file" multiple accept="image/*,image/jpeg">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="glo" type="submit" >Отправить</button>
                 </td>
             </tr>
         </table>

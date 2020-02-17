@@ -56,7 +56,7 @@
 .nazvanie {
   text-decoration: none;
   font-family: 'Ubuntu Condensed', sans-serif;
-  color: #9d999d;
+  color: #4D92FE;
   letter-spacing: 2px;
   position: relative;
   padding-bottom: 20px;
@@ -72,6 +72,6 @@
   height: 50px;
   background: rgba(230, 230, 230, 0.25);
   font-size: 14px;
-  margin: 20px;
+  margin: 10px;
   border-radius: 5px;
 }
