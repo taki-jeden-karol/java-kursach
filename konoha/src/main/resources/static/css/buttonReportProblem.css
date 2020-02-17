@@ -1,4 +1,4 @@
-a.glo{
+.glo{
     color:#4D92FE;
     padding: 10px 20px;
     text-decoration:none;
@@ -13,7 +13,7 @@ a.glo{
     border: 3px solid #4D92FE;
     border-radius: 15px;
 }
-a.glo:hover {
+.glo:hover {
     background-position: 0 0;
-    color:#fff;
+    color: #ffffff;
 }
