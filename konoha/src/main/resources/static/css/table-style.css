@@ -8,8 +8,17 @@ table.problems {
     color: #656665;
     border: 1px solid rgba(122,122,122,0.5);
     border-radius: 20px;
-    width: 90%;
+    width: 40%;
     margin: 0 auto;
+}
+
+table.problems input {
+    width: 90%;
+    height: 50px;
+    background: rgba(230, 230, 230, 0.25);
+    font-size: 14px;
+    margin: 20px;
+    border-radius: 5px;
 }
 
 table.news {
