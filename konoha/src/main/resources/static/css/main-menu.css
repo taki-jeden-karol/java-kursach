@@ -68,6 +68,7 @@
 }
 
 .categories{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   width: 90%;
   height: 50px;
   background: rgba(230, 230, 230, 0.25);
