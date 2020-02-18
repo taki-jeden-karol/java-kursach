@@ -7,8 +7,9 @@ table.problems {
     background: #ffffff;
     color: #656665;
     border: 1px solid rgba(122,122,122,0.5);
-    border-radius: 20px;
-    width: 40%;
+    border-radius: 10px;
+    width: 350px;
+    height: 400px;
     margin: 0 auto;
 }
 
@@ -30,9 +31,29 @@ table.news {
     background: #ffffff;
     color: #656665;
     border: 1px solid rgba(122,122,122,0.5);
-    border-radius: 20px;
+    border-radius: 10px;
     width: 90%;
     margin: 0 auto;
+}
+
+table.problems-info {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #ffffff;
+    color: #656665;
+    border: 1px solid rgba(122,122,122,0.5);
+    border-radius: 10px;
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+table.problems-info label {
+    font-size: 18px;
+    padding: 10px;
 }
 
 th {
