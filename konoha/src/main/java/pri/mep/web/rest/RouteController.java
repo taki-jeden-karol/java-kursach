@@ -11,12 +11,12 @@ public class RouteController {
 
     @GetMapping("/index")
     public String index() {
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/news")
     public String news() {
-        return "/news";
+        return "news";
     }
 
     @GetMapping("/problem-info")

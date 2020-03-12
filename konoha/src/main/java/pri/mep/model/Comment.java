@@ -1,12 +1,21 @@
 package pri.mep.model;
 
-public class Comment {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "COMMENT")
+public class Comment {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
+    @Column(name = "TEXT")
     private String text;
 
-    private int authorId;
+    @ManyToOne
+    @JoinColumn(name ="FK_AUTHOR_ID")
+    private User authorId;
 
     public int getId() {
         return id;

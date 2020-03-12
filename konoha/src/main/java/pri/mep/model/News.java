@@ -1,20 +1,31 @@
 package pri.mep.model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "NEWS")
 public class News {
-
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
+    @Column(name = "TITLE")
     private String title;
 
+    @Column(name = "DESCRIPTION")
     private String description;
 
-    private Date date;
+    @Column(name = "DATE_OF_CREATION")
+    private Date dateOfCreation;
 
+    @Column(name = "COUNT_OF_VOTES")
     private int countOfVotes;
 
+    @OneToMany mappedBy  TODO!!!!!
+    @JoinColumn
     private List<Comment> comments;
 
     public int getId() {
@@ -41,12 +52,12 @@ public class News {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateOfCreation() {
+        return dateOfCreation;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateOfCreation(Date dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
     }
 
     public int getCountOfVotes() {
@@ -71,7 +82,7 @@ public class News {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", date=" + date +
+                ", date=" + dateOfCreation +
                 ", countOfVotes=" + countOfVotes +
                 ", comments=" + comments +
                 '}';
