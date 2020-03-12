@@ -2,23 +2,36 @@ package pri.mep.model;
 
 import pri.mep.model.enums.StatusRequest;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "REQUEST")
 public class Request {
-
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
+    @Column(name = "ADDRESS")
     private String address;
 
-    private Date date;
+    @Column(name = "DATE_OF_CREATION")
+    private Date dateOfCreation;
 
+    @Column(name = "DESCRIPTION")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     private StatusRequest status;
 
-    private int problemId;
+    @ManyToOne
+    @JoinColumn(name = "FK_PROBLEM_ID")
+    private Problem problem;
 
-    private int authorId;
+    @ManyToOne
+    @JoinColumn(name ="FK_AUTHOR_ID")
+    private User user;
 
     public int getId() {
         return id;
@@ -36,12 +49,28 @@ public class Request {
         this.address = address;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateOfCreation() {
+        return dateOfCreation;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateOfCreation(Date dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public Problem getProblem() {
+        return problem;
+    }
+
+    public void setProblem(Problem problem) {
+        this.problem = problem;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {
@@ -60,32 +89,17 @@ public class Request {
         this.status = status;
     }
 
-    public int getProblemId() {
-        return problemId;
-    }
-
-    public void setProblemId(int problemId) {
-        this.problemId = problemId;
-    }
-
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
 
     @Override
     public String toString() {
         return "Request{" +
                 "id=" + id +
                 ", address='" + address + '\'' +
-                ", date=" + date +
+                ", date=" + dateOfCreation +
                 ", description='" + description + '\'' +
                 ", status=" + status +
-                ", problemId=" + problemId +
-                ", authorId=" + authorId +
+                ", problemId=" + problem +
+                ", authorId=" + user +
                 '}';
     }
 }

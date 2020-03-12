@@ -1,6 +1,7 @@
 package pri.mep.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "COMMENT")
@@ -10,12 +11,23 @@ public class Comment {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "FK_NEWS_ID")
+    private News news;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_PROBLEM_ID")
+    private Problem problem;
+
     @Column(name = "TEXT")
     private String text;
 
+    @Column(name = "DATE_OF_CREATION")
+    private Date dateOfCreation;
+
     @ManyToOne
     @JoinColumn(name ="FK_AUTHOR_ID")
-    private User authorId;
+    private User user;
 
     public int getId() {
         return id;
@@ -33,12 +45,36 @@ public class Comment {
         this.text = text;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
+
+    public Problem getProblem() {
+        return problem;
+    }
+
+    public void setProblem(Problem problem) {
+        this.problem = problem;
+    }
+
+    public Date getDateOfCreation() {
+        return dateOfCreation;
+    }
+
+    public void setDateOfCreation(Date dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
     }
 
     @Override
@@ -46,7 +82,7 @@ public class Comment {
         return "Comment{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", authorId=" + authorId +
+                ", authorId=" + user +
                 '}';
     }
 }

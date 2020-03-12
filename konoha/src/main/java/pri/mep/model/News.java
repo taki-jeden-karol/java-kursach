@@ -1,6 +1,7 @@
 package pri.mep.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -24,9 +25,8 @@ public class News {
     @Column(name = "COUNT_OF_VOTES")
     private int countOfVotes;
 
-    @OneToMany mappedBy  TODO!!!!!
-    @JoinColumn
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "news")
+    private Collection<Comment> comments;
 
     public int getId() {
         return id;
@@ -68,11 +68,11 @@ public class News {
         this.countOfVotes = countOfVotes;
     }
 
-    public List<Comment> getComments() {
+    public Collection<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(Collection<Comment> comments) {
         this.comments = comments;
     }
 

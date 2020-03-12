@@ -2,26 +2,44 @@ package pri.mep.model;
 
 import pri.mep.model.enums.StatusProblem;
 
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "PROBLEM")
 public class Problem {
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
+    @Column(name = "ADDRESS")
     private String address;
 
-    private Date date;
+    @Column(name = "DATE_OF_CREATION")
+    private Date dateOfCreation;
 
+    @Column(name = "DESCRIPTION")
     private String description;
 
+    @Column(name = "COUNT_OF_VOTES")
     private int countOfVotes;
 
-    private int authorId;
+    @ManyToOne
+    @JoinColumn(name ="FK_AUTHOR_ID")
+    private User user;
 
+    @Enumerated(EnumType.STRING)
     private StatusProblem status;
 
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "problem")
+    private Collection<Comment> comments;
+
+    @OneToMany(mappedBy = "problem")
+    private Collection<Request> requests;
 
     public int getId() {
         return id;
@@ -39,12 +57,16 @@ public class Problem {
         this.address = address;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateOfCreation() {
+        return dateOfCreation;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateOfCreation(Date dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getDescription() {
@@ -63,12 +85,24 @@ public class Problem {
         this.countOfVotes = countOfVotes;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public Collection<Comment> getComments() {
+        return comments;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public Collection<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Collection<Request> requests) {
+        this.requests = requests;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public StatusProblem getStatus() {
@@ -79,9 +113,6 @@ public class Problem {
         this.status = status;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
@@ -92,10 +123,10 @@ public class Problem {
         return "Problem{" +
                 "id=" + id +
                 ", address='" + address + '\'' +
-                ", date=" + date +
+                ", date=" + dateOfCreation +
                 ", description='" + description + '\'' +
                 ", countOfVotes=" + countOfVotes +
-                ", authorId=" + authorId +
+                ", authorId=" + user +
                 ", status=" + status +
                 ", comments=" + comments +
                 '}';
