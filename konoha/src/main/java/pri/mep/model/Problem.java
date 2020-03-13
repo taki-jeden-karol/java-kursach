@@ -1,33 +1,45 @@
 package pri.mep.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pri.mep.model.enums.StatusProblem;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "problems")
 public class Problem {
-
-    private int id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "problem_id")
+    private Long id;
     private String address;
-
-    private Date date;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH.mm.ss")
+    private LocalDateTime date;
     private String description;
-
-    private int countOfVotes;
-
-    private int authorId;
-
+    private Long countOfVotes;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
+    @Enumerated(EnumType.STRING)
     private StatusProblem status;
-
+    @OneToMany(mappedBy = "problem", cascade = CascadeType.ALL)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "problem", cascade = CascadeType.ALL)
+    private List<Request> requests;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 
-    public int getId() {
+    public Problem() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +51,11 @@ public class Problem {
         this.address = address;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -55,20 +67,20 @@ public class Problem {
         this.description = description;
     }
 
-    public int getCountOfVotes() {
+    public Long getCountOfVotes() {
         return countOfVotes;
     }
 
-    public void setCountOfVotes(int countOfVotes) {
+    public void setCountOfVotes(Long countOfVotes) {
         this.countOfVotes = countOfVotes;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public StatusProblem getStatus() {
@@ -87,6 +99,43 @@ public class Problem {
         this.comments = comments;
     }
 
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Problem problem = (Problem) o;
+
+        if (!id.equals(problem.id)) return false;
+        if (!author.equals(problem.author)) return false;
+        return creationDate.equals(problem.creationDate);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + creationDate.hashCode();
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Problem{" +
@@ -95,9 +144,11 @@ public class Problem {
                 ", date=" + date +
                 ", description='" + description + '\'' +
                 ", countOfVotes=" + countOfVotes +
-                ", authorId=" + authorId +
+                ", author=" + author +
                 ", status=" + status +
                 ", comments=" + comments +
+                ", requests=" + requests +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }

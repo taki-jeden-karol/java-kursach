@@ -1,9 +1,13 @@
 package pri.mep.model.enums;
 
 public enum StatusRequest {
-    UNDER_CONSIDERATION, // На рассмотрении
-    REVIEWED, // Рассмотрена
-    ACCEPTED, // Принята
-    REJECTED, // Отклонено
-    DISPLAYED; // Отображена
+    UNDER_CONSIDERATION("На рассмотрении"), // На рассмотрении
+    REVIEWED("Рассмотрена"), // Рассмотрена
+    ACCEPTED("Принята"), // Принята
+    REJECTED("Отклонено"), // Отклонено
+    DISPLAYED("Отображена"); // Отображена
+
+    StatusRequest(String description) {
+
+    }
 }
