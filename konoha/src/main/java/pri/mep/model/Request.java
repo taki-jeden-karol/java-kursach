@@ -1,30 +1,42 @@
 package pri.mep.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pri.mep.model.enums.StatusRequest;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
+@Entity
+@Table(name = "requests")
 public class Request {
-
-    private int id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "request_id")
+    private Long id;
     private String address;
-
-    private Date date;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH.mm.ss")
+    private LocalDateTime date;
     private String description;
-
+    @Enumerated(EnumType.STRING)
     private StatusRequest status;
+    @ManyToOne
+    @JoinColumn(name = "problem_id")
+    private Problem problem;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 
-    private int problemId;
+    public Request() {
+    }
 
-    private int authorId;
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,11 +48,11 @@ public class Request {
         this.address = address;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -60,20 +72,49 @@ public class Request {
         this.status = status;
     }
 
-    public int getProblemId() {
-        return problemId;
+    public Problem getProblem() {
+        return problem;
     }
 
-    public void setProblemId(int problemId) {
-        this.problemId = problemId;
+    public void setProblem(Problem problem) {
+        this.problem = problem;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Request request = (Request) o;
+
+        if (!id.equals(request.id)) return false;
+        if (!author.equals(request.author)) return false;
+        return creationDate.equals(request.creationDate);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + creationDate.hashCode();
+        return result;
     }
 
     @Override
@@ -84,8 +125,9 @@ public class Request {
                 ", date=" + date +
                 ", description='" + description + '\'' +
                 ", status=" + status +
-                ", problemId=" + problemId +
-                ", authorId=" + authorId +
+                ", problem=" + problem +
+                ", author=" + author +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }

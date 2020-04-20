@@ -4,5 +4,5 @@ public enum Roles {
     USER,
     ADMIN,
     MODERATOR,
-    NEWS_MODERATOR;
+    NEWS_MODERATOR
 }

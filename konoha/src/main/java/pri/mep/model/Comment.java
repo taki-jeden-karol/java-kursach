@@ -1,18 +1,36 @@
 package pri.mep.model;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "comments")
 public class Comment {
 
-    private int id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String text;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
+    @ManyToOne()
+    @JoinColumn(name = "news_id")
+    private News news;
+    @ManyToOne
+    @JoinColumn(name = "problem_id")
+    private Problem problem;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 
-    private int authorId;
+    public Comment() {
+    }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -24,12 +42,57 @@ public class Comment {
         this.text = text;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
+
+    public Problem getProblem() {
+        return problem;
+    }
+
+    public void setProblem(Problem problem) {
+        this.problem = problem;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Comment comment = (Comment) o;
+
+        if (!id.equals(comment.id)) return false;
+        if (!author.equals(comment.author)) return false;
+        return creationDate.equals(comment.creationDate);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + creationDate.hashCode();
+        return result;
     }
 
     @Override
@@ -37,7 +100,10 @@ public class Comment {
         return "Comment{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", authorId=" + authorId +
+                ", author=" + author +
+                ", news=" + news +
+                ", problem=" + problem +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }
